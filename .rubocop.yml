@@ -1,0 +1,96 @@
+AllCops:
+  Exclude:
+    - 'bin/*'
+
+Bundler/OrderedGems:
+  Exclude:
+    - 'Gemfile'
+
+Layout/EmptyLineAfterGuardClause:
+  Exclude:
+    - 'bin/bundle'
+
+Layout/EmptyLinesAroundAccessModifier:
+  Exclude:
+    - 'app/controllers/movies_controller.rb'
+
+Layout/EmptyLinesAroundBlockBody:
+  Exclude:
+    - 'db/schema.rb'
+
+Layout/IndentationConsistency:
+  Exclude:
+    - 'app/controllers/movies_controller.rb'
+
+Layout/IndentationWidth:
+  Exclude:
+    - 'app/controllers/movies_controller.rb'
+
+Layout/MultilineOperationIndentation:
+  Exclude:
+    - 'bin/bundle'
+
+Layout/SpaceInsideArrayLiteralBrackets:
+  Exclude:
+    - 'config/environments/production.rb'
+
+Layout/SpaceInsidePercentLiteralDelimiters:
+  Exclude:
+    - 'Gemfile'
+    - 'app/controllers/movies_controller.rb'
+  
+Layout/LineLength:
+  Max: 120
+
+Metrics/CyclomaticComplexity:
+  Max: 9
+
+Metrics/MethodLength:
+  Max: 13
+
+Metrics/PerceivedComplexity:
+  Max: 9
+
+Style/BlockComments:
+  Exclude:
+    - 'spec/spec_helper.rb'
+
+Style/Documentation:
+  Enabled: false
+
+Style/EmptyMethod:
+  Exclude:
+    - 'app/controllers/movies_controller.rb'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/GlobalStdStream:
+  Exclude:
+    - 'config/environments/production.rb'
+
+Style/IfUnlessModifier:
+  Exclude:
+    - 'bin/bundle'
+
+Style/NumericLiterals:
+  Exclude:
+    - 'db/schema.rb'
+
+Style/PerlBackrefs:
+  Exclude:
+    - 'bin/bundle'
+
+Style/RedundantFetchBlock:
+  Exclude:
+    - 'config/puma.rb'
+
+Style/SpecialGlobalVars:
+  EnforcedStyle: use_perl_names
+
+Style/StringLiterals:
+  Enabled: false
+
+Style/SymbolArray:
+  EnforcedStyle: percent
+  MinSize: 10
