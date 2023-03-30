@@ -20,7 +20,6 @@ class MoviesController < ApplicationController
   end
 
   def update
-
   end
 
   def destroy
