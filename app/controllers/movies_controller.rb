@@ -17,13 +17,25 @@ class MoviesController < ApplicationController
 
   def create
     @movie = Movie.new(movie_params)
+    if @movie.save
+      redirect_to movies_path, notice: 'Movie was successfully created'
+    else
+      flash.alert = @movie.errors.full_messages.join(', ')
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def update
+    @movie.update!(movie_params)
+    redirect_to movie_path(@movie), notice: 'Movie was successfully updated'
+  rescue ActiveRecord::RecordInvalid
+    flash.alert = @movie.errors.full_messages.join(', ')
+    render :edit, status: :unprocessable_entity
   end
 
   def destroy
     @movie.destroy
+    redirect_to movies_path, notice: 'Movie was successfully deleted'
   end
 
   private
@@ -33,6 +45,6 @@ class MoviesController < ApplicationController
   end
 
   def movie_params
-    params.require(:movie).permit(:title, :text, :ratings, :category)
+    params.require(:movie).permit(:title, :text, :category)
   end
 end

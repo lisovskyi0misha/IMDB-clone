@@ -51,6 +51,10 @@ Metrics/MethodLength:
 Metrics/PerceivedComplexity:
   Max: 9
 
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
 Style/BlockComments:
   Exclude:
     - 'spec/spec_helper.rb'
