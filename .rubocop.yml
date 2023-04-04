@@ -1,6 +1,8 @@
 AllCops:
   Exclude:
     - 'bin/*'
+    - 'db/schema.rb'
+    - 'bin/bundle'    
 
 Bundler/OrderedGems:
   Exclude:
@@ -8,39 +10,6 @@ Bundler/OrderedGems:
 
 Layout/ArgumentAlignment:
   EnforcedStyle: with_fixed_indentation
-
-Layout/EmptyLineAfterGuardClause:
-  Exclude:
-    - 'bin/bundle'
-
-Layout/EmptyLinesAroundAccessModifier:
-  Exclude:
-    - 'app/controllers/movies_controller.rb'
-
-Layout/EmptyLinesAroundBlockBody:
-  Exclude:
-    - 'db/schema.rb'
-
-Layout/IndentationConsistency:
-  Exclude:
-    - 'app/controllers/movies_controller.rb'
-
-Layout/IndentationWidth:
-  Exclude:
-    - 'app/controllers/movies_controller.rb'
-
-Layout/MultilineOperationIndentation:
-  Exclude:
-    - 'bin/bundle'
-
-Layout/SpaceInsideArrayLiteralBrackets:
-  Exclude:
-    - 'config/environments/production.rb'
-
-Layout/SpaceInsidePercentLiteralDelimiters:
-  Exclude:
-    - 'Gemfile'
-    - 'app/controllers/movies_controller.rb'
   
 Layout/LineLength:
   Max: 120
@@ -67,28 +36,12 @@ Style/BlockComments:
 Style/Documentation:
   Enabled: false
 
-Style/EmptyMethod:
-  Exclude:
-    - 'app/controllers/movies_controller.rb'
-
 Style/FrozenStringLiteralComment:
   Enabled: false
 
 Style/GlobalStdStream:
   Exclude:
     - 'config/environments/production.rb'
-
-Style/IfUnlessModifier:
-  Exclude:
-    - 'bin/bundle'
-
-Style/NumericLiterals:
-  Exclude:
-    - 'db/schema.rb'
-
-Style/PerlBackrefs:
-  Exclude:
-    - 'bin/bundle'
 
 Style/RedundantFetchBlock:
   Exclude:
