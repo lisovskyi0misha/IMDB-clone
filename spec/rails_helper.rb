@@ -59,8 +59,9 @@ RSpec.configure do |config|
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
 
-  config.include(Shoulda::Matchers::ActiveModel, type: :model)
+  config.include Shoulda::Matchers::ActiveModel, type: :model
   config.include FactoryBot::Syntax::Methods
+  config.include Devise::Test::IntegrationHelpers, type: :request
 
   Shoulda::Matchers.configure do |shoulda_mathcers_config|
     shoulda_mathcers_config.integrate do |with|

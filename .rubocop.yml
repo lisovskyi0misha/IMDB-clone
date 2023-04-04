@@ -6,6 +6,9 @@ Bundler/OrderedGems:
   Exclude:
     - 'Gemfile'
 
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
+
 Layout/EmptyLineAfterGuardClause:
   Exclude:
     - 'bin/bundle'
