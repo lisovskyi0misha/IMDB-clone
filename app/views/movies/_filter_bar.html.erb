@@ -1,0 +1,12 @@
+<div class="filter">
+  <h5 class="filter-header">Filter films by category</h5>
+  <%= search_form_for @q, url: root_path do |f| %>
+    <%= f.collection_check_boxes :category_in, Movie.defined_enums['category'], :last, :first do |box| %>
+      <div class="filter-option">
+        <%= box.check_box%>
+        <%= box.label(class: 'filter-text') { box.text.capitalize} %>
+      </div>
+    <% end %>
+    <%= f.submit 'Search', class: 'btn btn-primary' %>
+  <% end %>
+</div>
