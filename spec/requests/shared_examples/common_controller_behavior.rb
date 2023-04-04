@@ -24,7 +24,7 @@ end
 RSpec.shared_examples 'non-owner response' do |action|
   it 'redirects user back' do
     subject
-    expect(response).to redirect_to(movies_path)
+    expect(response).to redirect_to(root_path)
   end
 
   it 'flashes right alert message' do

@@ -1,14 +1,5 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Movies</h1>
-
-<div id="movies">
+<div id="movies" class="movies-grid">
   <% @movies.each do |movie| %>
-    <%= render movie %>
-    <p>
-      <%= link_to "Show this movie", movie %>
-    </p>
+    <%= render partial: 'movie_card', locals: { movie: } %>
   <% end %>
 </div>
-
-<%= link_to "New movie", new_movie_path %>

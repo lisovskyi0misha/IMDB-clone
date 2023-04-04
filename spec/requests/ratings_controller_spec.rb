@@ -33,7 +33,7 @@ RSpec.describe RatingsController do
 
         it 'redirects back' do
           create_request
-          expect(response).to redirect_to(movies_path)
+          expect(response).to redirect_to(root_path)
         end
 
         it 'does not call job' do
@@ -96,7 +96,7 @@ RSpec.describe RatingsController do
 
           it 'redirects back' do
             update_request
-            expect(response).to redirect_to(movies_path)
+            expect(response).to redirect_to(root_path)
           end
 
           it 'does not update rating' do

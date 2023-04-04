@@ -49,6 +49,8 @@ gem 'devise'
 
 gem 'sidekiq'
 
+gem 'faker'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

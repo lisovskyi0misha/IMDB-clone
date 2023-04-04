@@ -41,7 +41,7 @@ RSpec.describe MoviesController do
 
     context 'with valid params' do
       let(:params) { { movie: attributes_for(:movie) } }
-      let(:shared_params) { { path: movies_path, message_part: 'created' } }
+      let(:shared_params) { { path: root_path, message_part: 'created' } }
 
       it 'saves movie to database' do
         expect { create_request }.to change(Movie, :count).by(1)
@@ -102,7 +102,7 @@ RSpec.describe MoviesController do
   describe 'DELETE #destroy' do
     subject(:destroy_request) { delete "/movies/#{movie.id}" }
     let(:movie) { create(:movie) }
-    let(:shared_params) { { path: movies_path, message_part: 'deleted' } }
+    let(:shared_params) { { path: root_path, message_part: 'deleted' } }
 
     it 'deletes movie from database' do
       movie
