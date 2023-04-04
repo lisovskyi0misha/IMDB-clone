@@ -62,6 +62,7 @@ RSpec.configure do |config|
   config.include Shoulda::Matchers::ActiveModel, type: :model
   config.include FactoryBot::Syntax::Methods
   config.include Devise::Test::IntegrationHelpers, type: :request
+  config.include ActiveJob::TestHelper, type: :job
 
   Shoulda::Matchers.configure do |shoulda_mathcers_config|
     shoulda_mathcers_config.integrate do |with|
