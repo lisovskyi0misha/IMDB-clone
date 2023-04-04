@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Rating do
   it { should validate_presence_of(:points) }
   it { should validate_numericality_of(:points).only_integer }
+  it { should validate_numericality_of(:points).is_in(1..10) }
   it do
     user = create(:user)
     movie = create(:movie)
