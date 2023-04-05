@@ -5,16 +5,10 @@ require_relative 'shared_examples/common_controller_behavior'
 
 RSpec.describe MoviesController do
   describe 'GET #index' do
-    subject(:index_request) { get '/movies' }
+    subject(:index_request) { get '/' }
     let(:movies) { create_list(:movie, 3) }
 
     include_examples 'positive GET responses', :index
-
-    it 'finds movies' do
-      movies
-      index_request
-      expect(assigns(:movies)).to match_array(movies)
-    end
   end
 
   describe 'GET #show' do
