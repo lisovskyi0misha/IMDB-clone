@@ -56,3 +56,6 @@ Style/StringLiterals:
 Style/SymbolArray:
   EnforcedStyle: percent
   MinSize: 10
+
+Naming/MemoizedInstanceVariableName:
+  EnforcedStyleForLeadingUnderscores: required
