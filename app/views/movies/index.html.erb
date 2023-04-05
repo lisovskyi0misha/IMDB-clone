@@ -1,7 +1,4 @@
-<div id="movies" class="movies-grid">
-  <% @movies.each do |movie| %>
-    <%= render partial: 'movie_card', locals: { movie: } %>
-  <% end %>
-</div>
+<%= turbo_frame_tag 'movies', class: 'movies-grid', data: { turbo_action: 'advance' }, src: categories_movies_path do %> 
+<% end %>
 
-<%= render partial: 'filter_bar' %>
+<%= render partial: 'filter_bar', locals: { turbo_frame: 'movies' } %>

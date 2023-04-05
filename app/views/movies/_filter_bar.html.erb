@@ -1,12 +1,10 @@
-<div class="filter">
+<div class="filter" data-controller="filter">
   <h5 class="filter-header">Filter films by category</h5>
-  <%= search_form_for @q, url: root_path do |f| %>
-    <%= f.collection_check_boxes :category_in, Movie.defined_enums['category'], :last, :first do |box| %>
-      <div class="filter-option">
-        <%= box.check_box%>
-        <%= box.label(class: 'filter-text') { box.text.capitalize} %>
-      </div>
-    <% end %>
-    <%= f.submit 'Search', class: 'btn btn-primary' %>
+  <% Movie.defined_enums['category'].keys.each do |category| %>
+    <div class="filter-option">
+      <input type="checkbox" value="<%= category%>" data-action="change->filter#changeUrl" data-filter-target="checkBox">
+      <label class="filter-text"><%= category.capitalize %></label>
+    </div>
   <% end %>
+  <%= link_to 'Search', categories_movies_path, class: 'btn btn-primary', data: { filter_target: 'link', turbo_frame: 'movies' } %>
 </div>
