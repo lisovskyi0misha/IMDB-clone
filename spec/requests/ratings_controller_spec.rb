@@ -1,8 +1,89 @@
 require 'rails_helper'
 require_relative 'shared_examples/common_controller_behavior'
 require_relative 'shared_examples/non_get_turbo_responses'
+require_relative 'shared_examples/get_responses'
 
 RSpec.describe RatingsController do
+  describe 'GET #new' do
+    subject(:new_request) { get "/movies/#{movie.id}/ratings/new", headers: }
+    let(:movie) { create(:movie) }
+
+    context 'with authenticated user' do
+      before { sign_in(create(:user)) }
+
+      context 'with direct request' do
+        let(:headers) { { "Turbo-Frame" => false } }
+
+        it 'redirects to root' do
+          new_request
+          expect(response).to redirect_to(root_path)
+        end
+
+        it 'responds with 302 status' do
+          new_request
+          expect(response).to have_http_status(:found)
+        end
+      end
+
+      context 'with turbo frame request' do
+        let(:headers) { { "Turbo-Frame" => true } }
+
+        include_examples 'finds movie'
+        include_examples 'positive GET responses', :new
+
+        it 'builds new rating with movie' do
+          new_request
+          expect(assigns(:rating)).to be_a_new(Rating)
+          expect(assigns(:rating).movie_id).to eq(movie.id)
+        end
+      end
+    end
+
+    context 'with non-authenticated user' do
+      include_examples 'non-authenticated user'
+    end
+  end
+
+  describe 'GET #edit' do
+    subject(:edit_request) { get "/movies/#{movie.id}/ratings/#{rating.id}/edit", headers: }
+    let(:movie) { create(:movie) }
+    let(:rating) { create(:rating, rated_movie: movie) }
+
+    context 'with authenticated user' do
+      before { sign_in(create(:user)) }
+
+      context 'with direct request' do
+        let(:headers) { { "Turbo-Frame" => false } }
+
+        it 'redirects to root' do
+          edit_request
+          expect(response).to redirect_to(root_path)
+        end
+
+        it 'responds with 302 status' do
+          edit_request
+          expect(response).to have_http_status(:found)
+        end
+      end
+
+      context 'with turbo frame request' do
+        let(:headers) { { "Turbo-Frame" => true } }
+
+        include_examples 'finds movie'
+        include_examples 'positive GET responses', :edit
+
+        it 'finds rating' do
+          edit_request
+          expect(assigns(:rating)).to eq(rating)
+        end
+      end
+    end
+
+    context 'with non-authenticated user' do
+      include_examples 'non-authenticated user'
+    end
+  end
+
   describe 'POST #create' do
     subject(:create_request) do
       post "/movies/#{movie.id}/ratings",

@@ -10,14 +10,13 @@ RSpec.configure do |config|
 
   config.use_transactional_fixtures = false
 
-  config.include Warden::Test::Helpers, type: :feature
+  config.include Devise::Test::IntegrationHelpers, type: :feature
 
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
   end
 
   config.before(:each) do
-    Warden.test_mode!
     DatabaseCleaner.strategy = :transaction
   end
 
@@ -31,6 +30,5 @@ RSpec.configure do |config|
 
   config.after(:each) do
     DatabaseCleaner.clean
-    Warden.test_reset!
   end
 end
