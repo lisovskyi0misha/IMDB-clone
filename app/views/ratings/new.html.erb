@@ -1,0 +1,11 @@
+<%= turbo_frame_tag 'rate-movie-frame' do %>
+  <h6>Rate this</h6>
+  <h5><%= @movie.title %></h5>
+
+  <%= form_for [@movie, @rating] do |f|%>
+    <% (1..10).each do |num| %>
+      <%= f.radio_button :points, num%>
+    <% end %>
+    <%= f.submit 'Rate' %>
+  <% end %>
+<% end %>

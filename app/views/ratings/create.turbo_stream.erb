@@ -1,0 +1,5 @@
+<%= turbo_stream.replace 'rate-movie-frame' do %>
+  <%= turbo_frame_tag 'rate-movie-frame' do %>
+    <%= link_to 'Change rating', edit_movie_rating_path(movie_id: @movie.id, id: @rating.id), class: 'btn btn-light' %>
+  <% end %>
+<% end %>

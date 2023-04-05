@@ -1,4 +1,8 @@
-<p style="color: green"><%= notice %></p>
+<h1 class=""><%= @movie.title %></h1>
+
+<%= turbo_frame_tag 'rate-movie-frame' do %>
+  <%= link_to 'Rate movie', new_movie_rating_path(@movie), class: 'btn btn-light' %>
+<% end %>
 
 <div>
   <%= link_to "Edit this movie", edit_movie_path(@movie) %> |
