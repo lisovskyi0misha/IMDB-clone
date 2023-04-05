@@ -1,14 +1,4 @@
-<p style="color: green"><%= notice %></p>
+<%= turbo_frame_tag 'movies', class: 'movies-grid', data: { turbo_action: 'advance' }, src: categories_movies_path do %> 
+<% end %>
 
-<h1>Movies</h1>
-
-<div id="movies">
-  <% @movies.each do |movie| %>
-    <%= render movie %>
-    <p>
-      <%= link_to "Show this movie", movie %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New movie", new_movie_path %>
+<%= render partial: 'filter_bar', locals: { turbo_frame: 'movies' } %>

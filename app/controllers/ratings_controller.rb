@@ -7,13 +7,13 @@ class RatingsController < ApplicationController
 
   def create
     @rating = @movie.ratings.create(points:, user_id: current_user.id)
-    redirect_back(fallback_location: movies_path) if @rating.invalid?
+    redirect_back(fallback_location: root_path) if @rating.invalid?
   end
 
   def update
     @rating.update!(points:)
   rescue ActiveRecord::RecordInvalid
-    redirect_back(fallback_location: movies_path)
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
@@ -40,7 +40,7 @@ class RatingsController < ApplicationController
     return if @rating.user_id == current_user.id
 
     flash.alert = "You can\'t #{params[:action]} other\'s ratings"
-    redirect_back(fallback_location: movies_path)
+    redirect_back(fallback_location: root_path)
   end
 
   def points

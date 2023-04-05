@@ -33,7 +33,7 @@ RSpec.describe RatingsController do
 
         it 'redirects back' do
           create_request
-          expect(response).to redirect_to(movies_path)
+          expect(response).to redirect_to(root_path)
         end
 
         it 'does not call job' do
@@ -58,7 +58,7 @@ RSpec.describe RatingsController do
     subject(:update_request) do
       patch "/movies/#{movie.id}/ratings/#{rating.id}",
         params: { movie_id: movie.id, rating: { points: }, format: :turbo_stream },
-        headers: { "HTTP_REFERER" => movies_url }
+        headers: { "HTTP_REFERER" => root_url }
     end
     let(:owner) { create(:user) }
     let(:movie) { create(:movie) }
@@ -96,7 +96,7 @@ RSpec.describe RatingsController do
 
           it 'redirects back' do
             update_request
-            expect(response).to redirect_to(movies_path)
+            expect(response).to redirect_to(root_path)
           end
 
           it 'does not update rating' do
@@ -137,7 +137,7 @@ RSpec.describe RatingsController do
     subject(:destroy_request) do
       delete "/movies/#{movie.id}/ratings/#{rating.id}",
         params: { movie_id: movie.id, format: :turbo_stream },
-        headers: { "HTTP_REFERER" => movies_url }
+        headers: { "HTTP_REFERER" => root_url }
     end
     let(:owner) { create(:user) }
     let(:movie) { create(:movie) }

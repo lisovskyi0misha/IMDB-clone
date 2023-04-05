@@ -5,16 +5,10 @@ require_relative 'shared_examples/common_controller_behavior'
 
 RSpec.describe MoviesController do
   describe 'GET #index' do
-    subject(:index_request) { get '/movies' }
+    subject(:index_request) { get '/' }
     let(:movies) { create_list(:movie, 3) }
 
     include_examples 'positive GET responses', :index
-
-    it 'finds movies' do
-      movies
-      index_request
-      expect(assigns(:movies)).to match_array(movies)
-    end
   end
 
   describe 'GET #show' do
@@ -41,7 +35,7 @@ RSpec.describe MoviesController do
 
     context 'with valid params' do
       let(:params) { { movie: attributes_for(:movie) } }
-      let(:shared_params) { { path: movies_path, message_part: 'created' } }
+      let(:shared_params) { { path: root_path, message_part: 'created' } }
 
       it 'saves movie to database' do
         expect { create_request }.to change(Movie, :count).by(1)
@@ -102,7 +96,7 @@ RSpec.describe MoviesController do
   describe 'DELETE #destroy' do
     subject(:destroy_request) { delete "/movies/#{movie.id}" }
     let(:movie) { create(:movie) }
-    let(:shared_params) { { path: movies_path, message_part: 'deleted' } }
+    let(:shared_params) { { path: root_path, message_part: 'deleted' } }
 
     it 'deletes movie from database' do
       movie

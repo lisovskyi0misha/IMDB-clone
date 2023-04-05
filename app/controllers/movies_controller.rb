@@ -1,9 +1,7 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: %i[show edit update destroy]
 
-  def index
-    @movies = Movie.all
-  end
+  def index; end
 
   def show; end
 
@@ -16,7 +14,7 @@ class MoviesController < ApplicationController
   def create
     @movie = Movie.new(movie_params)
     if @movie.save
-      redirect_to movies_path, notice: 'Movie was successfully created'
+      redirect_to root_path, notice: 'Movie was successfully created'
     else
       flash.alert = @movie.errors.full_messages.join(', ')
       render :new, status: :unprocessable_entity
@@ -33,7 +31,7 @@ class MoviesController < ApplicationController
 
   def destroy
     @movie.destroy
-    redirect_to movies_path, notice: 'Movie was successfully deleted'
+    redirect_to root_path, notice: 'Movie was successfully deleted'
   end
 
   private

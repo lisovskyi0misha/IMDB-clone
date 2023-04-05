@@ -13,6 +13,8 @@ Layout/ArgumentAlignment:
   
 Layout/LineLength:
   Max: 120
+  Exclude:
+    - 'config/initializers/devise.rb'
 
 Metrics/CyclomaticComplexity:
   Max: 9
@@ -56,3 +58,6 @@ Style/StringLiterals:
 Style/SymbolArray:
   EnforcedStyle: percent
   MinSize: 10
+
+Naming/MemoizedInstanceVariableName:
+  EnforcedStyleForLeadingUnderscores: required

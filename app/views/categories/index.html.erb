@@ -1,0 +1,5 @@
+<%= turbo_frame_tag 'movies' do %>
+  <% @movies.each do |movie| %>
+    <%= render partial: 'movies/movie_card', locals: { movie: } %>
+  <% end %>
+<% end %>
