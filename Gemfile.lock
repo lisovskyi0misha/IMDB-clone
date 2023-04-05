@@ -184,10 +184,6 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
-    ransack (3.2.1)
-      activerecord (>= 6.1.5)
-      activesupport (>= 6.1.5)
-      i18n
     redis (4.8.1)
     redis-client (0.11.2)
       connection_pool
@@ -281,7 +277,6 @@ DEPENDENCIES
   puma (~> 5.0)
   rails (~> 7.0.4, >= 7.0.4.3)
   rails-controller-testing
-  ransack
   redis (~> 4.0)
   rspec-rails
   selenium-webdriver
