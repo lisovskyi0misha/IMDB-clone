@@ -87,6 +87,12 @@ GEM
     crass (1.0.6)
     cssbundling-rails (1.1.2)
       railties (>= 6.0.0)
+    database_cleaner (2.0.1)
+      database_cleaner-active_record (~> 2.0.0)
+    database_cleaner-active_record (2.0.1)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.1)
     date (3.3.3)
     debug (1.7.2)
       irb (>= 1.5.0)
@@ -216,7 +222,6 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    shoulda (2.11.3)
     shoulda-matchers (5.3.0)
       activesupport (>= 5.2.0)
     sidekiq (7.0.2)
@@ -267,6 +272,7 @@ DEPENDENCIES
   bootsnap
   capybara
   cssbundling-rails
+  database_cleaner
   debug
   devise
   factory_bot_rails
@@ -280,7 +286,6 @@ DEPENDENCIES
   redis (~> 4.0)
   rspec-rails
   selenium-webdriver
-  shoulda
   shoulda-matchers (~> 5.0)
   sidekiq
   sprockets-rails
