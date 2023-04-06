@@ -3,7 +3,11 @@
     <h1 class="col-sm-9 p-3 movie-text"><%= @movie.title %></h1>
     <div class="col-3 p-3 mb-2" id="rate-movie-link">
       <div class="no-wrap-row justify-content-around align-items-center">
-        <%= link_to 'Rate movie', new_movie_rating_path(@movie), class: 'btn btn-light', data: { turbo_frame: 'rate-movie-frame' } %>
+        <% if can?(:new, @movie, current_user) %>
+          <%= link_to 'Rate movie', new_movie_rating_path(@movie), class: 'btn btn-light', data: { turbo_frame: 'rate-movie-frame' } %>
+        <% elsif can?(:edit, @movie, current_user) %>
+          <%= link_to 'Change rating', edit_movie_rating_path(movie_id: @movie.id, id: @rating.id), class: 'btn btn-light', data: { turbo_frame: 'rate-movie-frame' } %>
+        <% end %>
         <div class="no-wrap-row align-items-center">
           <h1 class="star-color"><i class="bi bi-star-fill"></i></h1>
           <p class="movie-text ms-2"><%= @movie.rating %> / 10</p>
