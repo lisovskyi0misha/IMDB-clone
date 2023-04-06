@@ -12,13 +12,31 @@ RSpec.shared_examples 'where owner required' do
     context 'when has rating on current movie' do
       let(:owner) { current_user }
 
-      it { is_expected.to eq(true) }
+      context 'with given rating' do
+        it { is_expected.to eq(true) }
+      end
+
+      context 'without given rating' do
+        let(:rating) { false }
+
+        before { create(:rating, rated_movie: movie, rated_user: owner) }
+
+        it { is_expected.to eq(true) }
+      end
     end
 
     context 'when does not have rating on current movie' do
       let(:owner) { create(:user) }
 
-      it { is_expected.to eq(false) }
+      context 'with given rating' do
+        it { is_expected.to eq(false) }
+      end
+
+      context 'without given rating' do
+        let(:rating) { false }
+
+        it { is_expected.to eq(false) }
+      end
     end
   end
 end

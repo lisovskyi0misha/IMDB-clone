@@ -14,7 +14,7 @@ class RatingPolicy
   def edit?
     return false if user.nil?
 
-    rating.user_id == user.id
+    owner?
   end
 
   def create?
@@ -26,18 +26,26 @@ class RatingPolicy
   def update?
     return false if user.nil?
 
-    rating.user_id == user.id
+    owner?
   end
 
   def destroy?
     return false if user.nil?
 
-    rating.user_id == user.id
+    owner?
   end
 
   private
 
   attr_reader :user, :movie, :rating
+
+  def owner?
+    if rating.present?
+      rating.user_id == user.id
+    else
+      rating?
+    end
+  end
 
   def rating?
     movie.ratings.find_by(user_id: user.id).present?
