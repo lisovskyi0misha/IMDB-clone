@@ -28,7 +28,12 @@
 
   <div>
     <%= form.label :category, style: "display: block" %>
-    <%= form.number_field :category %>
+    <%= form.collection_select :category, Movie.defined_enums['category'], :first, :first %>
+  </div>
+
+  <div>
+    <%= form.label :image, style: "display: block" %>
+    <%= form.file_field :image %>
   </div>
 
   <div>

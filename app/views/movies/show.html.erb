@@ -13,6 +13,14 @@
   </div>
 </div>
 
+<div class="container">
+  <div class="col-sm-9">
+    <% if @movie.image.attached? %>
+      <%= image_tag @movie.image.variant(resize_to_limit: [600, 600]) %>
+    <% end %>
+  </div>
+</div>
+
 <%= turbo_frame_tag 'rate-movie-frame' do %>
 <% end %>
 
