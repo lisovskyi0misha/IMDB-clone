@@ -110,6 +110,15 @@ RSpec.describe MoviesController do
         expect(Movie.first.image.blob.filename).to eq('test_image.png')
       end
     end
+
+    describe 'attaching trailer' do
+      let(:params) { { movie: attributes_for(:movie, :with_trailer) } }
+
+      it 'attaches trailer to movie' do
+        create_request
+        expect(Movie.first.trailer.blob.filename).to eq('test_video.mp4')
+      end
+    end
   end
 
   describe 'GET #edit' do

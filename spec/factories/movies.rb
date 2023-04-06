@@ -8,6 +8,10 @@ FactoryBot.define do
       image { Rack::Test::UploadedFile.new('spec/fixtures/test_image.png', 'image/png') }
     end
 
+    trait :with_trailer do
+      trailer { Rack::Test::UploadedFile.new('spec/fixtures/test_video.mp4', 'video/mp4') }
+    end
+
     trait :action do
       category { :action }
     end
