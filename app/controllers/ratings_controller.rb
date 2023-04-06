@@ -48,7 +48,7 @@ class RatingsController < ApplicationController
   end
 
   def authorize
-    return if @rating.user_id == current_user.id
+    return if RatingPolicy.new(current_user, @movie, @rating).send("#{params[:action]}?".to_sym)
 
     flash.alert = "You can\'t #{params[:action]} other\'s ratings"
     redirect_back(fallback_location: root_path)
