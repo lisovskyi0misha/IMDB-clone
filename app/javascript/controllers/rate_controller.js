@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = [ 'rateStar', 'rateBtn' ]
+  static targets = [ 'rateStar', 'rateBtn', 'frame' ]
 
   chooseRate({params}) {
     this.rateStarTargets.forEach(element => {
@@ -14,5 +14,11 @@ export default class extends Controller {
       }
     });
     this.rateBtnTarget.classList.remove('disabled')
+  }
+
+  close() {
+    const frame = this.frameTarget;
+    frame.innerHTML = "";
+    frame.removeAttribute("src");
   }
 }

@@ -1,5 +1,7 @@
 <%= turbo_frame_tag 'rate-movie-frame' do %>
-  <div class="position-fixed top-50 start-50 translate-middle rate-pop-up" data-controller="rate">
+  <div class="position-fixed top-50 start-50 translate-middle rate-pop-up">
+    <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0" 
+      aria-label="Close" data-action="rate#close"></button>
     <h6 class="movie-text">Rate this</h6>
     <h5 class="movie-text"><%= @movie.title %></h5>
 

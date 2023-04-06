@@ -21,8 +21,9 @@
   </div>
 </div>
 
-<%= turbo_frame_tag 'rate-movie-frame' do %>
-<% end %>
+<div data-controller="rate">
+  <%= turbo_frame_tag 'rate-movie-frame', data: { rate_target: 'frame' } %>
+</div>
 
 <div>
   <%= link_to "Edit this movie", edit_movie_path(@movie) %> |
