@@ -53,6 +53,15 @@ RSpec.describe MoviesController do
 
       include_examples 'negative non-GET responses', :new
     end
+
+    describe 'adding image' do
+      let(:params) { { movie: attributes_for(:movie, :with_image) } }
+
+      it 'attaches image to movie' do
+        create_request
+        expect(Movie.first.image.blob.filename).to eq('test_image.png')
+      end
+    end
   end
 
   describe 'GET #edit' do

@@ -4,6 +4,10 @@ FactoryBot.define do
     text { 'Some movie description text' }
     category { :comedy }
 
+    trait :with_image do
+      image { Rack::Test::UploadedFile.new('spec/fixtures/test_image.png', 'image/png') }
+    end
+
     trait :action do
       category { :action }
     end

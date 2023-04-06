@@ -12,6 +12,7 @@ RSpec.describe Movie do
 
   it { should have_many(:ratings) }
   it { should have_many(:rated_users).through(:ratings) }
+  it { should have_one_attached(:image) }
 
   it { should define_enum_for(:category).with_values(%i[action fantasy western cartoon comedy]) }
 end

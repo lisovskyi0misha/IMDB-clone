@@ -5,6 +5,7 @@ class Movie < ApplicationRecord
 
   has_many :ratings
   has_many :rated_users, through: :ratings, class_name: 'User'
+  has_one_attached :image
 
   enum category: %i[action fantasy western cartoon comedy]
 end
