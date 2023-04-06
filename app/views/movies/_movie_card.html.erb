@@ -1,10 +1,10 @@
-<div class="black-card">
+<div class="movie-card">
   <img src="" class="card-img-top" alt="<%= movie.title %>">
   <div class="card-body">
-    <span class="black-card-text">&#11088 <strong><%= movie.rating %></strong></span>
-    <%= link_to movie_path(movie), class: 'black-card-link', data: { turbo: false } do %>
-      <h5 class="black-card-text"><%= movie.title %></h5>
+    <span class="movie-card-text">&#11088 <strong><%= movie.rating %></strong></span>
+    <%= link_to movie_path(movie), class: 'movie-card-link', data: { turbo: false } do %>
+      <h5 class="movie-card-text"><%= movie.title %></h5>
     <% end %>
-    <span class="black-card-text"><strong><%= movie.category %></strong></span>
+    <span class="movie-card-text"><strong><%= movie.category %></strong></span>
   </div>
 </div>
