@@ -28,9 +28,7 @@
       <% if @movie.trailer.attached? %>
         <%= video_tag url_for(@movie.trailer), size: "1000x400", controls: true %>
       <% end %>
-      <div class="w-100">
-        <p class="movie-text ms-4 mt-4 text-lg-start text-break"><%= @movie.text %></p>
-      </div>
+      <p class="movie-text ms-4 mt-4 text-lg-start text-break"><%= @movie.text %></p>
     </div>
   </div>
 </div>
