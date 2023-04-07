@@ -1,5 +1,5 @@
 require 'rails_helper'
-require_relative 'shared_examples/owner_related_examples.rb'
+require_relative 'shared_examples/owner_related_examples'
 
 RSpec.describe RatingPolicy do
   describe '#new?' do
