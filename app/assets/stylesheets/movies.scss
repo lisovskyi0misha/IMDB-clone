@@ -44,7 +44,7 @@
   box-shadow: 0 0 50px 50px rgba(156, 153, 153, 0.466);
 }
 
-.new_rating {
+.new_rating, .edit_rating {
   display: flex;
   flex-direction: column;
   align-items: center;

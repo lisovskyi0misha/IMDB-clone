@@ -1,7 +1,19 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = [ 'rateStar', 'rateBtn', 'frame' ]
+  static targets = [ 'rateStar', 'rateBtn', 'frame', 'checkedBtn' ]
+
+  findChecked() {
+    if (this.hasCheckedBtnTarget) {
+      let label = 0
+      while (label < this.checkedBtnTarget.value) {
+        let element = this.rateStarTargets[label];
+        element.classList.remove("movie-text", "bi-star");
+        element.classList.add("star-color", "bi-star-fill");
+        label++
+      }
+    }
+  }
 
   chooseRate({params}) {
     this.rateStarTargets.forEach(element => {
