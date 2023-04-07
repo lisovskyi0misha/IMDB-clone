@@ -6,3 +6,6 @@ import { application } from "./application"
 
 import FilterController from "./filter_controller"
 application.register("filter", FilterController)
+
+import RateController from "./rate_controller"
+application.register("rate", RateController)

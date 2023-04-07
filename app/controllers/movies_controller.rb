@@ -3,7 +3,9 @@ class MoviesController < ApplicationController
 
   def index; end
 
-  def show; end
+  def show
+    @rating = @movie.ratings.find_by(user_id: current_user&.id)
+  end
 
   def new
     @movie = Movie.new
@@ -37,10 +39,10 @@ class MoviesController < ApplicationController
   private
 
   def set_movie
-    @movie = Movie.find(params[:id])
+    @movie = Movie.includes(:ratings).find(params[:id])
   end
 
   def movie_params
-    params.require(:movie).permit(:title, :text, :category)
+    params.require(:movie).permit(:title, :text, :category, :image, :trailer)
   end
 end

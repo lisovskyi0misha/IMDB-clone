@@ -15,6 +15,54 @@ RSpec.describe MoviesController do
     subject(:show_request) { get "/movies/#{movie.id}" }
     let(:movie) { create(:movie) }
 
+    describe 'finding rating' do
+      let(:user) { create(:user) }
+
+      context 'with rating' do
+        let(:rating) { create(:rating, rated_movie: movie, rated_user: user) }
+
+        context 'with non-authenticated user' do
+          it 'does not find rating' do
+            rating
+            show_request
+            expect(assigns(:rating)).to eq(nil)
+          end
+        end
+
+        context 'with non-authenticated user' do
+          before { sign_in user }
+
+          it 'does not find rating' do
+            rating
+            show_request
+            expect(assigns(:rating)).to eq(rating)
+          end
+        end
+      end
+
+      context 'without rating' do
+        let(:rating) { nil }
+
+        context 'with non-authenticated user' do
+          it 'does not find rating' do
+            rating
+            show_request
+            expect(assigns(:rating)).to eq(nil)
+          end
+        end
+
+        context 'with non-authenticated user' do
+          before { sign_in user }
+
+          it 'does not find rating' do
+            rating
+            show_request
+            expect(assigns(:rating)).to eq(nil)
+          end
+        end
+      end
+    end
+
     include_examples 'finds movie'
     include_examples 'positive GET responses', :show
   end
@@ -52,6 +100,24 @@ RSpec.describe MoviesController do
       end
 
       include_examples 'negative non-GET responses', :new
+    end
+
+    describe 'adding image' do
+      let(:params) { { movie: attributes_for(:movie, :with_image) } }
+
+      it 'attaches image to movie' do
+        create_request
+        expect(Movie.first.image.blob.filename).to eq('test_image.png')
+      end
+    end
+
+    describe 'attaching trailer' do
+      let(:params) { { movie: attributes_for(:movie, :with_trailer) } }
+
+      it 'attaches trailer to movie' do
+        create_request
+        expect(Movie.first.trailer.blob.filename).to eq('test_video.mp4')
+      end
     end
   end
 

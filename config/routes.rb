@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :movies, except: :index do
     get 'categories/(:categories)', to: 'categories#index', as: :categories, on: :collection
-    resources :ratings, only: %i[create update destroy]
+    resources :ratings, only: %i[new edit create update destroy]
   end
 
   root "movies#index"
