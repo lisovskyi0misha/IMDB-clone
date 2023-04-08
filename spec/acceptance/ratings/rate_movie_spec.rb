@@ -1,6 +1,6 @@
 require_relative '../acceptance_helper'
 
-feature 'rate movie',
+feature 'rate movie from show page',
   "\nAuthenticated user can rate any movie in range of 1 to 10 points
   Rating form must be a pop-up
   User can rate a movie only once\n" do
@@ -17,9 +17,9 @@ feature 'rate movie',
     movie
     visit movie_path(movie)
     click_on 'Rate movie'
-    find("label[for='radio-button-10']").click
+    find(:label, for: 'radio-button-10').click
     click_button 'Rate'
-    expect(page).not_to have_button('Rate')
+    expect(page).not_to have_css('.rate-pop-up')
     expect(page).to have_link('Change rating')
   end
 

@@ -5,9 +5,17 @@
     <% end %>
   </div>
   <div class="card-body">
-    <span class="movie-card-text">&#11088 <strong><%= movie.rating %></strong></span>
+    <span class="movie-card-text">&#11088<strong><%= movie.rating %></strong></span>
+    <span data-controller="rate">
+      <% if can?(:new, movie, current_user) %>
+        <%= link_to new_movie_rating_path(movie), id: "rate-movie-link-#{movie.id}", class: 'btn-link ms-2', data: { turbo_frame: 'rate-movie-frame' } do %>
+          <i class="bi bi-star"></i>
+        <% end %>
+        <%= turbo_frame_tag 'rate-movie-frame', data: { rate_target: 'frame', action: 'turbo:frame-render->rate#findChecked' } %>
+      <% end %>
+    </span>
     <%= link_to movie_path(movie), class: 'movie-card-link', data: { turbo: false } do %>
-      <h5 class="movie-card-text"><%= movie.title %></h5>
+      <h5 class="movie-card-text mt-2"><%= movie.title %></h5>
     <% end %>
     <span class="movie-card-text"><strong><%= movie.category %></strong></span>
   </div>
