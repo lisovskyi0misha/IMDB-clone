@@ -16,11 +16,10 @@ feature 'Change movie rating',
     sign_in user
     create(:rating, rated_movie: movie, rated_user: user, points: 5)
     visit movie_path(movie)
-    # save_and_open_page
     click_on 'Change rating'
-    find("label[for='radio-button-10']").click
+    find(:label, for: 'radio-button-10').click
     click_button 'Rate'
-    expect(page).not_to have_button('Rate')
+    expect(page).not_to have_css('.rate-pop-up')
     expect(page).to have_link('Change rating')
   end
 
