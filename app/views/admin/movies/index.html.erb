@@ -6,7 +6,8 @@
     <th>Title</th>
     <th>Description</th>
   </tr>
-  <% @movies.each do |movie| %>
+  <% @movies.each_with_index do |movie, ind| %>
+    <div class="<%= ind.odd? ? 'light-row' : nil %>">
     <tr id="<%= dom_id movie %>">
       <td><strong><%= movie.id %></strong></td>
       <td>
