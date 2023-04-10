@@ -1,0 +1,14 @@
+body {
+  background-color: white;
+}
+
+td, th {
+  border: 15px solid transparent;
+}
+
+.table-text {
+  width: 500px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
