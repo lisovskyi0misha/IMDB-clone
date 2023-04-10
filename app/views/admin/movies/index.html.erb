@@ -1,3 +1,6 @@
 <% @movies.each do |movie| %>
-  <p><%= movie.title %>
+  <div id="<%= dom_id movie %>">
+    <p ><%= movie.title %></p>
+    <%= link_to 'Delete', admin_movie_path(movie), data: { turbo_method: :delete } %>
+  </div>
 <% end %>

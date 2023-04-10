@@ -23,6 +23,7 @@ RSpec.describe Admin::MoviesController do
         include_examples 'renders layout for admin'
 
         it 'finds movies' do
+          movies
           index_request
           expect(assigns(:movies)).to eq(movies)
         end
