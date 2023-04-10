@@ -1,7 +1,7 @@
 require_relative '../../acceptance_helper'
 
 feature 'create movie', %(
-  Only admins can create movie
+  Only admins can create movies
 ) do
   scenario 'Non-authenticated user tries to create a movie' do
     visit new_admin_movie_path
@@ -14,7 +14,7 @@ feature 'create movie', %(
     expect(page).to have_content('You don\'t have rights to access this page')
   end
 
-  scenario 'Admin tries to creatre a movie' do
+  scenario 'Admin tries to create a movie' do
     sign_in(create(:user, :admin))
     visit new_admin_movie_path
     fill_in 'Title', with: 'Title 1'
