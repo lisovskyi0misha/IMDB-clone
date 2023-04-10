@@ -1,31 +1,20 @@
-<div class="container">
-  <div class="row justify-content-start">
-    <h1 class="col-sm-9 p-3 movie-text"><%= @movie.title %></h1>
-    <div class="col-3 p-3 mb-2" id="rate-movie-link">
-      <div class="no-wrap-row justify-content-around align-items-center">
-        <div class="no-wrap-row align-items-center">
-          <h1 class="star-color"><i class="bi bi-star-fill"></i></h1>
-          <p class="movie-text ms-2"><%= @movie.rating %> / 10</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="container">
-  <div class="no-wrap-row align-items-center">
-    <div class="col-4">
-      <% if @movie.image.attached? %>
-        <%= image_tag @movie.image.variant(resize_to_limit: [600, 600]) %>
-      <% end %>
-    </div>
-    <div class="col-9">
+<div class="movie-show-page row">
+  <div class="col">
+    <% if @movie.image.attached? %>
+      <%= image_tag @movie.image.variant(resize_to_limit: [400, 400]) %>
+    <% end %>
+    <div class="pt-5 pb-5">
       <% if @movie.trailer.attached? %>
-        <%= video_tag url_for(@movie.trailer), size: "1000x400", controls: true %>
+        <%= video_tag url_for(@movie.trailer), controls: true %>
       <% end %>
-      <p class="movie-text ms-4 mt-4 text-lg-start text-break"><%= @movie.text %></p>
     </div>
   </div>
-</div>
+  <div class="col">
+    <h1 class="col-sm-9 p-3 movie-text">Title: <%= @movie.title %></h1>
+    <h5 class="col-sm-9 p-3 movie-text">Rating: <%= @movie.rating %></h5>
+    <p class="ms-4 mt-4 text-lg-start text-break"><strong>Description:</strong> <%= @movie.text %></p>
 
-<%= link_to 'Delete this movie', admin_movie_path(@movie), data: { turbo_method: :delete } %>
+    <span><%= link_to 'Edit', edit_admin_movie_path(@movie), class: 'btn btn-outline-warning' %></span>
+    <span><%= link_to 'Delete', admin_movie_path(@movie), data: { turbo_method: :delete }, class: 'btn btn-outline-danger' %></span>
+  </div>
+</div>

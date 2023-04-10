@@ -1,5 +1,5 @@
 body {
-  background-color: white;
+  background-color: rgb(196, 186, 186);
 }
 
 td, th {
@@ -11,4 +11,8 @@ td, th {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+}
+
+.movie-show-page {
+  padding: 30px;
 }
