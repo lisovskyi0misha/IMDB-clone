@@ -51,6 +51,8 @@ gem 'sidekiq'
 
 gem 'faker'
 
+gem 'bootstrap_form'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

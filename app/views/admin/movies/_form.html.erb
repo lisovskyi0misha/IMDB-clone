@@ -1,36 +1,12 @@
-<%= form_for movie, url:, method: do |form| %>
+<div class="form">
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
+  <%= bootstrap_form_for movie, url:, method: do |form| %>
     <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :text, style: "display: block" %>
     <%= form.text_area :text %>
-  </div>
-
-  <div>
-    <%= form.label :rating, style: "display: block" %>
     <%= form.text_field :rating %>
-  </div>
-
-  <div>
-    <%= form.label :category, style: "display: block" %>
     <%= form.collection_select :category, Movie.defined_enums['category'], :first, :first %>
-  </div>
-
-  <div>
-    <%= form.label :image, style: "display: block" %>
     <%= form.file_field :image %>
-  </div>
-
-  <div>
-    <%= form.label :trailer, style: "display: block" %>
     <%= form.file_field :trailer %>
-  </div>
-
-  <div>
     <%= form.submit %>
-  </div>
-<% end %>
+  <% end %>
+</div>

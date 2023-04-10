@@ -16,3 +16,13 @@ td, th {
 .movie-show-page {
   padding: 30px;
 }
+
+.form {
+  width: 400px;
+  margin: auto;
+
+  &-header {
+    width: 300px;
+    margin: auto;
+  }
+}
