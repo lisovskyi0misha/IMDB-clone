@@ -11,14 +11,9 @@
   </head>
 
   <body>
-    <% if alert %>
-      <div class="mt-5 alert alert-danger alert-dismissible">
-        <%= alert %>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
-    <% elsif notice %>
-      <div class="mt-5 alert alert-success alert-dismissible">
-        <%= notice %>
+    <% flash.each do |type, msg| %>
+      <div class="mt-5 alert alert-dismissible fade show <%= bootstrap_class_for_flash(type) %> alert-dismissable fade show">
+        <%= msg %>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     <% end %>

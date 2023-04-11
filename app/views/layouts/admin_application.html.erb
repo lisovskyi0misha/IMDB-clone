@@ -11,9 +11,15 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% flash.each do |type, msg| %>
+      <div class="mt-5 alert alert-dismissible fade show <%= bootstrap_class_for_flash(type) %> alert-dismissable fade show">
+        <%= msg %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% end %>
     <%= render partial: 'admin/shared/header' %>
-    <%= yield %>
+    <div class="page">
+      <%= yield %>
+    </div>
   </body>
 </html>
