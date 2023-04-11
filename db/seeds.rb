@@ -15,7 +15,7 @@ letters to try to grab people\'s attention. To do that, you\'ll need to include 
   'Lord of The Rings: The Two Towers' => [:fantasy, 'lotr_2'],
   'Lord of The Rings: The Return of the King' => [:fantasy, 'lotr_3'],
   'The Dark Knight' => [:action, 'the_dark_knight'], 'The Dark Knigth Rises' => [:action, 'the_dark_knight_rises'],
-  'The Last Samurai' => [:action, 'the_last_samurai'], 'Troy' => [:action, 'troy' ]
+  'The Last Samurai' => [:action, 'the_last_samurai'], 'Troy' => [:action, 'troy']
 }.each do |title, params|
   m = Movie.create(title:, category: params.first, text:)
   m.image.attach(io: File.open("#{Rails.root}/app/assets/images/#{params.last}.png"), filename: params.last)
@@ -27,5 +27,5 @@ User.create(name: 'Admin', email: 'admin@test', password: '123123',
 User.create(name: 'User', email: 'user@test', password: '123123',
   password_confirmation: '123123', confirmed_at: Date.today, admin: true)
 
-Movie.find_by(title: 'Lord of The Rings: The Fellowship of the Ring').trailer.
-  attach(io: File.open("#{Rails.root}/app/assets/images/trailer.mp4"), filename: 'trailer.mp4')
+Movie.find_by(title: 'Lord of The Rings: The Fellowship of the Ring').trailer
+  .attach(io: File.open("#{Rails.root}/app/assets/images/trailer.mp4"), filename: 'trailer.mp4')
