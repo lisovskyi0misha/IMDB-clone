@@ -10,6 +10,7 @@
 * `cp database.yml.sample database.yml` and setup with your data
 * `rails db:create`
 * `rails db:migrate`
+* `rails db:seed`
 * `yarn add esbuild`
 * `yarn add bootstrap`
 
