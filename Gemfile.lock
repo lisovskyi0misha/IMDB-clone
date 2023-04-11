@@ -302,6 +302,7 @@ DEPENDENCIES
   rails-controller-testing
   redis (~> 4.0)
   rspec-rails
+  ruby-vips (~> 2.1, >= 2.1.4)
   selenium-webdriver
   shoulda-matchers (~> 5.0)
   sidekiq
