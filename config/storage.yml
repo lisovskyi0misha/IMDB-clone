@@ -10,8 +10,8 @@ local:
 digitalocean:
   service: S3
   endpoint: https://fra1.digitaloceanspaces.com
-  access_key_id: <%= Rails.application.credentials.dig(:digitalocean, :access_key_id) %>
-  secret_access_key: <%= Rails.application.credentials.dig(:digitalocean, :secret_access_key) %>
+  access_key_id: <%= ENV['DO_KEY'] %>
+  secret_access_key: <%= ENV['DO_SECRET'] %>
   bucket: movie-attachments
   region: fra1
 
