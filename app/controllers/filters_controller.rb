@@ -1,8 +1,8 @@
-class CategoriesController < ApplicationController
+class FiltersController < ApplicationController
   before_action :check_request
 
   def index
-    @movies = Movie.where(category: categories)
+    @pagy, @movies = pagy(Movie.where(category: categories))
   end
 
   private

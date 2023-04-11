@@ -1,10 +1,10 @@
 require 'rails_helper'
 require_relative 'shared_examples/get_responses'
 
-RSpec.describe CategoriesController do
+RSpec.describe FiltersController do
   describe 'GET #index' do
     context 'with direct request' do
-      subject(:index_request) { get '/movies/categories/comedy', headers: { "Turbo-Frame" => false } }
+      subject(:index_request) { get '/movies/categories/comedy/page', headers: { "Turbo-Frame" => false } }
 
       it 'redirects to root' do
         index_request
@@ -18,10 +18,10 @@ RSpec.describe CategoriesController do
     end
 
     context 'with turbo frame request' do
-      subject(:index_request) { get "/movies/categories/#{categories}", headers: { "Turbo-Frame" => true } }
+      subject(:index_request) { get "/movies/categories/#{categories}/page", headers: { "Turbo-Frame" => true } }
 
       %i[action cartoon comedy].each do |genre|
-        let!("#{genre}_movies".to_sym) { create_list(:movie, 2, genre) }
+        let!("#{genre}_movies".to_sym) { create_list(:movie, 1, genre) }
       end
 
       context 'with no categories' do
@@ -29,9 +29,9 @@ RSpec.describe CategoriesController do
 
         include_examples 'positive GET responses', :index
 
-        it 'finds all movies' do
+        it 'finds first 5 movies' do
           index_request
-          expect(assigns(:movies)).to match_array(Movie.all)
+          expect(assigns(:movies)).to match_array(Movie.first(5))
         end
       end
 
@@ -55,7 +55,7 @@ RSpec.describe CategoriesController do
 
         it 'finds movies with correct categories' do
           index_request
-          expect(assigns(:movies)).to match_array(movies)
+          expect(assigns(:movies)).to match_array(movies.first(5))
         end
       end
 
@@ -96,6 +96,40 @@ RSpec.describe CategoriesController do
         it 'flashes alert mesage' do
           index_request
           expect(flash.alert).to eq('Invalid category')
+        end
+      end
+    end
+
+    describe 'pagination' do
+      subject(:index_request) { get "/movies/categories/comedy/page/#{page}", headers: { "Turbo-Frame" => true } }
+
+      context 'without page' do
+        let(:page) { nil }
+        let!(:movies) { create_list(:movie, 2) }
+
+        it 'finds first page movies' do
+          index_request
+          expect(assigns(:movies)).to eq(movies)
+        end
+      end
+
+      context 'with first page' do
+        let(:page) { 1 }
+        let!(:movies) { create_list(:movie, 2) }
+
+        it 'finds first page movies' do
+          index_request
+          expect(assigns(:movies)).to eq(movies)
+        end
+      end
+
+      context 'with more than first page' do
+        let(:page) { 2 }
+        let!(:movies) { create_list(:movie, 6) }
+
+        it 'finds first page movies' do
+          index_request
+          expect(assigns(:movies)).to match_array(movies.last)
         end
       end
     end

@@ -1,9 +1,10 @@
 require_relative '../acceptance_helper'
 
-feature 'rate movie from show page',
-  "\nAuthenticated user can rate any movie in range of 1 to 10 points
+feature 'rate movie from show page', %(
+  Authenticated user can rate any movie in range of 1 to 10 points
   Rating form must be a pop-up
-  User can rate a movie only once\n" do
+  User can rate a movie only once
+  ) do
   given(:user) { create(:user) }
   given(:movie) { create(:movie) }
 

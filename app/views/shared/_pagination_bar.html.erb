@@ -1,0 +1,7 @@
+<div id="pagy-filter" data-controller="pagy" class="mt-5">
+  <%= link_to 'Previous', '', class: 'btn btn-outline-light me-4 pagy-btn', data: { pagy_target: 'pagyPrevLink', page: pagy.prev, turbo_frame: 'movies' } %>
+  <div>
+    <h6>Page: <%= pagy.page %>/<%= pagy.pages %>
+  </div>
+  <%= link_to 'Next', '', class: 'btn btn-outline-light ms-4 pagy-btn', data: { pagy_target: 'pagyNextLink', page: pagy.next, turbo_frame: 'movies' } %>
+</div>

@@ -1,9 +1,9 @@
 require_relative '../acceptance_helper'
 
-feature 'Change movie rating',
-  "\nAuthenticated user can change his rating to a rating in range of 1 to 10 points
+feature 'Change movie rating', %(
+  Authenticated user can change his rating to a rating in range of 1 to 10 points
   Rating form must be a pop-up
-  User can change only his own rating\n" do
+  User can change only his own rating) do
   given(:user) { create(:user) }
   given(:movie) { create(:movie) }
 

@@ -18,3 +18,15 @@ body {
 .not-displayed {
   display: none;
 }
+
+#pagy-filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: baseline;
+  color: $text_color;
+}
+
+.pagy-btn {
+  width: 100px;
+}
