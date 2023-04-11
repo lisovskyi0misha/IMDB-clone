@@ -18,7 +18,7 @@ module Admin
     def create
       @movie = Movie.new(movie_params)
       if @movie.save
-        redirect_to root_path, notice: 'Movie was successfully created'
+        redirect_to admin_movies_path, notice: 'Movie was successfully created'
       else
         flash.alert = @movie.errors.full_messages.join(', ')
         render :new, status: :unprocessable_entity
@@ -29,7 +29,7 @@ module Admin
 
     def update
       @movie.update!(movie_params)
-      redirect_to movie_path(@movie), notice: 'Movie was successfully updated'
+      redirect_to admin_movie_path(@movie), notice: 'Movie was successfully updated'
     rescue ActiveRecord::RecordInvalid
       flash.alert = @movie.errors.full_messages.join(', ')
       render :edit, status: :unprocessable_entity
@@ -37,7 +37,7 @@ module Admin
 
     def destroy
       @movie.destroy
-      redirect_to root_path, notice: 'Movie was successfully deleted'
+      redirect_to admin_movies_path, notice: 'Movie was successfully deleted'
     end
 
     private

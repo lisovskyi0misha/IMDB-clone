@@ -14,6 +14,9 @@
         <li class="nav-item">
           <%=link_to 'Log out', destroy_user_session_path, class: 'nav-link active', data: { turbo_method: :delete } %>
         </li>
+        <li class="nav-item">
+          <%=link_to 'Regular user site', root_path, class: 'nav-link active' %>
+        </li>
       </ul>
     </div>
   </div>

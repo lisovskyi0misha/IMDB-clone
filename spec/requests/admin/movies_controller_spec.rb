@@ -111,7 +111,7 @@ RSpec.describe Admin::MoviesController do
 
         context 'with valid params' do
           let(:params) { { movie: attributes_for(:movie) } }
-          let(:shared_params) { { path: root_path, message_part: 'created' } }
+          let(:shared_params) { { path: admin_movies_path, message_part: 'created' } }
 
           it 'saves movie to database' do
             expect { create_request }.to change(Movie, :count).by(1)
@@ -202,7 +202,7 @@ RSpec.describe Admin::MoviesController do
 
         context 'with valid params' do
           let(:params) { { movie: { title: 'Updated title' } } }
-          let(:shared_params) { { path: movie_path(movie), message_part: 'updated' } }
+          let(:shared_params) { { path: admin_movie_path(movie), message_part: 'updated' } }
 
           include_examples 'finds movie'
           include_examples 'positive non-GET responses', 'show'
@@ -238,7 +238,7 @@ RSpec.describe Admin::MoviesController do
   describe 'DELETE #destroy' do
     subject(:destroy_request) { delete "/admin/movies/#{movie.id}" }
     let(:movie) { create(:movie) }
-    let(:shared_params) { { path: root_path, message_part: 'deleted' } }
+    let(:shared_params) { { path: admin_movies_path, message_part: 'deleted' } }
 
     context 'with non-authenticated user' do
       include_examples 'non-authenticated user'

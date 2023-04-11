@@ -10,6 +10,9 @@
         <li class="nav-item">
           <%= link_to 'Log out', destroy_user_session_path, class: 'nav-link active', data: { turbo_method: :delete } %>
         </li>
+        <% if current_user.admin? %>
+          <%= link_to 'Admin', admin_movies_path, class: 'nav-link active' %>
+        <% end %>
       <% else %>
         <li class="nav-item">
           <%= link_to 'Sign in', new_user_session_path, class: 'nav-link active' %>
