@@ -1,0 +1,8 @@
+<%= turbo_frame_tag 'movies' do %>
+  <div class="movies-grid">
+    <% @movies.each do |movie| %>
+      <%= render partial: 'movies/movie_card', locals: { movie: } %>
+    <% end %>
+  </div>
+  <%= render partial: 'shared/pagination_bar', locals: { pagy: @pagy } %>
+<% end %>

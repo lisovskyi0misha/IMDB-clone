@@ -19,7 +19,7 @@ feature 'delete movie', %(
   scenario 'Admin tries to delete a movie from show page' do
     sign_in(create(:user, :admin))
     visit admin_movie_path(movie)
-    click_on 'Delete this movie'
+    click_on 'Delete'
     visit admin_movies_path
     expect(page).not_to have_content(movie.title)
   end
@@ -28,7 +28,6 @@ feature 'delete movie', %(
     movie
     sign_in(create(:user, :admin))
     visit admin_movies_path
-    # save_and_open_page
     within "#movie_#{movie.id}" do
       click_on 'Delete'
     end

@@ -1,4 +1,4 @@
-<div class="filter" data-controller="filter">
+<div class="filter" data-controller="filter" data-filter-pagy-outlet="#pagy-filter">
   <h5 class="filter-header">Filter films by category</h5>
   <% Movie.defined_enums['category'].keys.each do |category| %>
     <div class="filter-option">

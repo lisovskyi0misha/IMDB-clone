@@ -7,5 +7,8 @@ import { application } from "./application"
 import FilterController from "./filter_controller"
 application.register("filter", FilterController)
 
+import PagyController from "./pagy_controller"
+application.register("pagy", PagyController)
+
 import RateController from "./rate_controller"
 application.register("rate", RateController)
