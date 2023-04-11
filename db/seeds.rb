@@ -8,7 +8,7 @@ letters to try to grab people\'s attention. To do that, you\'ll need to include 
 
 {
   'Avatar' => [:action, 'avatar'], 'Batman Begins' => [:action, 'batman-begins'],
-  'Django Unchained' => [:western, 'django_unchained'], 'Dune' => [:fantasy, 'dune'],
+  'Django Unchained' => [:western, 'django_unchained'], 'The Good, The Bad and The Ugly' => [:western, 'gbu'],
   'Gladiator' => [:action, 'gladiator'], 'Inception' => [:comedy, 'inception'],
   'Inglourious Basterds' => [:comedy, 'inglourious_basterds'], 'Interstellar' => [:fantasy, 'interstellap'],
   'Lord of The Rings: The Fellowship of the Ring' => [:fantasy, 'lotr_1'],

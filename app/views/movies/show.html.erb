@@ -21,7 +21,7 @@
   <div class="no-wrap-row align-items-center">
     <div class="col-4">
       <% if @movie.image.attached? %>
-        <%= image_tag @movie.image.variant(resize_to_limit: [600, 600]) %>
+        <%= image_tag @movie.image, height: '600' %>
       <% end %>
     </div>
     <div class="col-9">

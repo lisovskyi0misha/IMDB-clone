@@ -24,7 +24,7 @@ feature 'create movie', %(
     click_on 'Create'
     expect(page).to have_content('Movie was successfully created')
     visit admin_movie_path(id: Movie.first.id)
-    expect(page).to have_css("img[src='#{url_for(Movie.first.image.variant(resize_to_limit: [400, 400]))}']")
+    expect(page).to have_css("img[src='#{url_for(Movie.first.image)}']")
     expect(page).to have_css("video[src*='#{rails_blob_path(Movie.first.trailer)}']")
   end
 end

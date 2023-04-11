@@ -1,7 +1,7 @@
 <div class="movie-show-page row">
   <div class="col">
     <% if @movie.image.attached? %>
-      <%= image_tag @movie.image.variant(resize_to_limit: [400, 400]) %>
+      <%= image_tag @movie.image, height: '400' %>
     <% end %>
     <div class="pt-5 pb-5">
       <% if @movie.trailer.attached? %>
