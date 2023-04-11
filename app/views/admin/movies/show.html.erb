@@ -1,0 +1,20 @@
+<div class="movie-show-page row">
+  <div class="col">
+    <% if @movie.image.attached? %>
+      <%= image_tag @movie.image.variant(resize_to_limit: [400, 400]) %>
+    <% end %>
+    <div class="pt-5 pb-5">
+      <% if @movie.trailer.attached? %>
+        <%= video_tag url_for(@movie.trailer), controls: true %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col">
+    <h1 class="col-sm-9 p-3 movie-text">Title: <%= @movie.title %></h1>
+    <h5 class="col-sm-9 p-3 movie-text">Rating: <%= @movie.rating %></h5>
+    <p class="ms-4 mt-4 text-lg-start text-break"><strong>Description:</strong> <%= @movie.text %></p>
+
+    <span><%= link_to 'Edit', edit_admin_movie_path(@movie), class: 'btn btn-outline-warning' %></span>
+    <span><%= link_to 'Delete', admin_movie_path(@movie), data: { turbo_method: :delete }, class: 'btn btn-outline-danger' %></span>
+  </div>
+</div>

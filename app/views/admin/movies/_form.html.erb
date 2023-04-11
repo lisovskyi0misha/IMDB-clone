@@ -1,0 +1,12 @@
+<div class="form">
+
+  <%= bootstrap_form_for movie, url:, method: do |form| %>
+    <%= form.text_field :title %>
+    <%= form.text_area :text %>
+    <%= form.text_field :rating %>
+    <%= form.collection_select :category, Movie.defined_enums['category'], :first, :first %>
+    <%= form.file_field :image %>
+    <%= form.file_field :trailer %>
+    <%= form.submit %>
+  <% end %>
+</div>

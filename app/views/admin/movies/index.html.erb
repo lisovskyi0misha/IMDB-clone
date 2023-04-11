@@ -1,0 +1,26 @@
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Image</th>
+    <th>Trailer appearence</th>
+    <th>Title</th>
+    <th>Description</th>
+  </tr>
+  <% @movies.each_with_index do |movie, ind| %>
+    <div class="<%= ind.odd? ? 'light-row' : nil %>">
+    <tr id="<%= dom_id movie %>">
+      <td><strong><%= movie.id %></strong></td>
+      <td>
+        <%= movie.image.attached? ? image_tag(movie.image.variant(resize_to_limit: [60, 60])) : 'No image' %>
+      </td>
+      <td>
+        <%= movie.trailer.attached? ? 'Has trailer' : 'No trailer' %>
+      </td>
+      <td class="table-text"><%= movie.title %></td>
+      <td><p class="table-text"><%= movie.text + movie.text + movie.text %></p></td>
+      <td><%= link_to 'Details', admin_movie_path(movie), class: 'btn btn-outline-success' %></td>
+      <td><%= link_to 'Edit', edit_admin_movie_path(movie), class: 'btn btn-outline-warning' %></td>
+      <td><%= link_to 'Delete', admin_movie_path(movie), data: { turbo_method: :delete }, class: 'btn btn-outline-danger' %></td>
+    </tr>
+  <% end %>
+</table>

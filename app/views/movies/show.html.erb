@@ -36,10 +36,3 @@
 <div data-controller="rate">
   <%= turbo_frame_tag 'rate-movie-frame', data: { rate_target: 'frame', action: 'turbo:frame-render->rate#findChecked' } %>
 </div>
-
-<div>
-  <%= link_to "Edit this movie", edit_movie_path(@movie) %> |
-  <%= link_to "Back to movies", root_path %>
-
-  <%= button_to "Destroy this movie", @movie, method: :delete %>
-</div>
