@@ -11,9 +11,20 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if alert %>
+      <div class="mt-5 alert alert-danger alert-dismissible">
+        <%= alert %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% elsif notice %>
+      <div class="mt-5 alert alert-success alert-dismissible">
+        <%= notice %>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% end %>
     <%= render partial: 'shared/header' %>
-    <%= yield %>
+    <div class="page">
+      <%= yield %>
+    </div>
   </body>
 </html>
