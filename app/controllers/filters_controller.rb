@@ -14,12 +14,7 @@ class FiltersController < ApplicationController
   def categories
     return valid_categoties unless params[:categories]
 
-    common_categories.empty? ? show_alert : common_categories
-  end
-
-  def show_alert
-    flash.alert = 'Invalid category'
-    redirect_to root_path
+    common_categories.empty? ? valid_categoties : common_categories
   end
 
   def valid_categoties

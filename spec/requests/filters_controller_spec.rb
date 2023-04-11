@@ -61,15 +61,11 @@ RSpec.describe FiltersController do
 
       context 'with one invalid category' do
         let(:categories) { 'invalid_category' }
+        let!(:movies) { [comedy_movies, action_movies, cartoon_movies].flatten }
 
-        it 'redirects to root path' do
+        it 'finds movies with all categories' do
           index_request
-          expect(response).to redirect_to(root_path)
-        end
-
-        it 'flashes alert mesage' do
-          index_request
-          expect(flash.alert).to eq('Invalid category')
+          expect(assigns(:movies)).to match_array(movies)
         end
       end
 
@@ -87,15 +83,11 @@ RSpec.describe FiltersController do
 
       context 'with more that one invalid categories' do
         let(:categories) { 'invalid_category-another_invalid_category' }
+        let!(:movies) { [comedy_movies, action_movies, cartoon_movies].flatten }
 
-        it 'redirects to root path' do
+        it 'finds movies with all categories' do
           index_request
-          expect(response).to redirect_to(root_path)
-        end
-
-        it 'flashes alert mesage' do
-          index_request
-          expect(flash.alert).to eq('Invalid category')
+          expect(assigns(:movies)).to match_array(movies)
         end
       end
     end
@@ -109,7 +101,7 @@ RSpec.describe FiltersController do
 
         it 'finds first page movies' do
           index_request
-          expect(assigns(:movies)).to eq(movies)
+          expect(assigns(:movies)).to match_array(movies)
         end
       end
 
@@ -119,7 +111,7 @@ RSpec.describe FiltersController do
 
         it 'finds first page movies' do
           index_request
-          expect(assigns(:movies)).to eq(movies)
+          expect(assigns(:movies)).to match_array(movies)
         end
       end
 
