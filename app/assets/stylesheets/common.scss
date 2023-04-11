@@ -35,3 +35,17 @@ body {
   background-color: rgb(163, 161, 161);
   width: 100%;
 }
+
+.form {
+  width: 400px;
+  margin: auto;
+  color: $text_color;
+
+  &-header {
+    width: 300px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    color: white;
+  }
+}
