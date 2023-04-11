@@ -2,7 +2,7 @@ class FiltersController < ApplicationController
   before_action :check_request
 
   def index
-    @pagy, @movies = pagy(Movie.where(category: categories))
+    @pagy, @movies = pagy(Movie.where(category: categories).with_attached_image)
   end
 
   private
